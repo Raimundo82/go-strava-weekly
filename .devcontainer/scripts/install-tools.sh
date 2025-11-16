@@ -15,8 +15,7 @@ go install github.com/daixiang0/gci@latest
 
 # Linter
 echo "Installing golangci-lint..."
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-
+go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.6.2
 # Hook manager
 echo "Installing lefthook..."
 go install github.com/evilmartians/lefthook@latest
