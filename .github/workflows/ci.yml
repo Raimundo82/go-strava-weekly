@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install developer tools
         run: |
-          chmod +x scripts/install-tools.sh
-          ./scripts/install-tools.sh
+          chmod +x .devcontainer/scripts/install-tools.sh
+          .devcontainer/scripts/install-tools.sh
 
       - name: Check formatting
         run: make check-format
