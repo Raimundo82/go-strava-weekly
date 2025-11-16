@@ -1,0 +1,39 @@
+name: Go CI
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  build-test-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "stable"
+          cache: true
+
+      - name: Install developer tools
+        run: |
+          chmod +x scripts/install-tools.sh
+          ./scripts/install-tools.sh
+
+      - name: Check formatting
+        run: make check-format
+
+      - name: Lint
+        run: make lint
+
+      - name: Test
+        run: make test
+
+      - name: Build
+        run: go build ./...
